@@ -1,0 +1,16 @@
+---
+items:
+- text: "m"
+  selected: true
+- options:
+  - "t"
+  - "g"
+  selected: "t"
+- text: "tak"
+  items:
+  - text: "m"
+    selected: true
+  - options:
+    - "t"
+    - "g"
+    selected: "t"
