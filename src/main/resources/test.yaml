@@ -1,16 +1,21 @@
 ---
 items:
-- text: "m"
+- !<CheckBox>
+  text: "mgshgsjhhjzn"
   selected: true
-- options:
+- !<ComboBox>
+  options:
   - "t"
   - "g"
   selected: "t"
-- panel: "tak"
+- !<PanelConfig>
+  panel: "tak"
   items:
-  - text: "m"
+  - !<CheckBox>
+    text: "todhshasn"
     selected: true
-  - options:
+  - !<ComboBox>
+    options:
     - "t"
     - "g"
     selected: "t"

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 @Data
@@ -18,6 +19,16 @@ public class PanelConfigModel implements ConfigItems {
     private ArrayList<ConfigItems> items;
     @Override
     public JComponent JPrint() {
-        return new JPanel();
+        JPanel jPanel = new JPanel();
+        jPanel.setLayout(new GridLayout(0,1));
+
+
+        items.forEach(e->{
+            jPanel.add(e.JPrint());
+        });
+
+//        jPanel.setPreferredSize(new Dimension(width -20,200));
+        jPanel.setBorder(BorderFactory.createTitledBorder(panel));
+        return jPanel;
     }
 }
