@@ -24,6 +24,11 @@ public class ComboBoxModel implements ConfigItems{
 
         JComboBox<String> jComboBox=new JComboBox<>(new Vector<String>(options));
         jComboBox.setSelectedItem(selected);
+        jComboBox.addItemListener(e->{
+            if (e.getStateChange() == 1){
+                selected = (String) e.getItem();
+            }
+        });
 
         return jComboBox;
     }

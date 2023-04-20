@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.model.Settings;
+import org.example.model.settings.AppConfig;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +13,23 @@ import java.io.File;
 //        Na prawo od obszaru edytora Textarea należy umieścić Panel boczny rozpoczynający się POD panelem Taskbar aż do dolnej krawędzi
 //        Pod listą oraz pod Textarea należy umieścić panel z zakładkami (Terminal, Komunikaty, Brudnopis), który kończy się pod Textarea i zostawia miejsce na Panel boczny
 //        Układy do zastosowania: Border Layout, Flow Layout, Grid Layout, Card Layout (tabbed)
+
+
 public class MyFrame extends JFrame {
 
 
+    private static AppConfig readConfig(){
+        try {
+            return AppConfig.factory("configTmp.yaml");
+        } catch (Exception ee) {
+            try {
+               return AppConfig.factory("config.yaml");
+            } catch (Exception eee) {
+                throw new RuntimeException(eee);
+            }
+        }
+    }
+    public static AppConfig config= readConfig();
     JMenuBar menuBar;
     JMenu plik;
     JMenuItem ot,zap,settings;
@@ -55,7 +70,7 @@ public class MyFrame extends JFrame {
         settings = new JMenuItem("setiings");
         settings.addActionListener(e -> {
 
-            new AppSettings();
+         config.open();
 
         });
 

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Deprecated
 public class Settings {
 
     private ArrayList<Boolean> listCheckBox = new ArrayList<>();

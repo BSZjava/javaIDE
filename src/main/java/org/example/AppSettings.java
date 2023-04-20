@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+@Deprecated
 public class AppSettings extends JFrame {
 
     ObjectMapper om = new ObjectMapper(new YAMLFactory());

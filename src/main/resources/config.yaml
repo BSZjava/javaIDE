@@ -1,0 +1,47 @@
+---
+out: "configTmp.yaml"
+items:
+- !<PanelConfig>
+  panel: "okno"
+  items:
+    - !<CheckBox>
+      text: "uruchom wysrodkowane"
+      selected: true
+    - !<CheckBox>
+      text: "uruchom zmaksymalizowane"
+      selected: false
+    - !<CheckBox>
+      text: "zapamientaj pozycje"
+      selected: true
+    - !<CheckBox>
+      text: "zapamientaj rozmiar"
+      selected: true
+- !<PanelConfig>
+  panel: "IDE"
+  items:
+    - !<ComboBox>
+      options:
+        - "Polski"
+        - "Angielski"
+      selected: "Polski"
+    - !<CheckBox>
+      text: "zapamientaj katalog przegladania"
+      selected: false
+    - !<CheckBox>
+      text: "zapamientaj otwarte pliki"
+      selected: true
+- !<PanelConfig>
+  panel: "okno"
+  items:
+    - !<CheckBox>
+      text: "ukryj menu główne"
+      selected: true
+    - !<CheckBox>
+      text: "odpiety pasek narzedziowy"
+      selected: false
+    - !<CheckBox>
+      text: "zablokowany pasek narzedziowy"
+      selected: true
+    - !<CheckBox>
+      text: "tryb ciemny"
+      selected: false

@@ -17,40 +17,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
     public static void main(String[] args) {
-//       new MyFrame();
-        AppConfig appConfig = new AppConfig();
-        appConfig.setItems(new ArrayList<>(List.of(
-                new CheckBoxModel("mgshgsjhhjzn",true)
-                ,
-                new ComboBoxModel(new ArrayList<>(List.of("t","g")),"t")
-                ,
-                new PanelConfigModel("tak",
-                        new ArrayList<>(List.of(
-                        new CheckBoxModel("todhshasn",true)
-                        ,
-                        new ComboBoxModel(new ArrayList<>(List.of("t","g")),"t")
+       new MyFrame();
 
-                )))
-                )));
-        ObjectMapper om = new ObjectMapper(new YAMLFactory());
-        try {
-            om.writeValue(new File("src/main/resources/test.yaml"), appConfig);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-//        appConfig.open();
-
-
-
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        File file = new File(classLoader.getResource("test.yaml").getFile());
-
-        try {
-            AppConfig settings = om.readValue(file, AppConfig.class);
-            settings.open();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
 
     }

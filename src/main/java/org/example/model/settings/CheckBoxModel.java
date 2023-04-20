@@ -19,6 +19,11 @@ public class CheckBoxModel implements ConfigItems{
     public JComponent JPrint() {
         JCheckBox jCheckBox = new JCheckBox(text);
         jCheckBox.setSelected(selected);
+        jCheckBox.addItemListener(e -> {
+
+            selected = !selected;
+
+        });
         return jCheckBox;
     }
 }
