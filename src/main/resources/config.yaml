@@ -19,6 +19,8 @@ items:
 - !<PanelConfig>
   panel: "IDE"
   items:
+    - !<Label>
+      text: "jezyk interfejsu"
     - !<ComboBox>
       options:
         - "Polski"
@@ -31,7 +33,22 @@ items:
       text: "zapamientaj otwarte pliki"
       selected: true
 - !<PanelConfig>
-  panel: "okno"
+  panel: "GUI"
+  items:
+    - !<CheckBox>
+      text: "ukryj menu główne"
+      selected: true
+    - !<CheckBox>
+      text: "odpiety pasek narzedziowy"
+      selected: false
+    - !<CheckBox>
+      text: "zablokowany pasek narzedziowy"
+      selected: true
+    - !<CheckBox>
+      text: "tryb ciemny"
+      selected: false
+- !<PanelConfig>
+  panel: "GUI"
   items:
     - !<CheckBox>
       text: "ukryj menu główne"

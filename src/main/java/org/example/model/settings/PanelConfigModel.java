@@ -27,7 +27,6 @@ public class PanelConfigModel implements ConfigItems {
             jPanel.add(e.JPrint());
         });
 
-//        jPanel.setPreferredSize(new Dimension(width -20,200));
         jPanel.setBorder(BorderFactory.createTitledBorder(panel));
         return jPanel;
     }

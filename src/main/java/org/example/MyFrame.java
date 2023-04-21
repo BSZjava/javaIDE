@@ -29,7 +29,7 @@ public class MyFrame extends JFrame {
             }
         }
     }
-    public static AppConfig config= readConfig();
+    public static AppConfig config = readConfig();
     JMenuBar menuBar;
     JMenu plik;
     JMenuItem ot,zap,settings;
@@ -108,12 +108,11 @@ public class MyFrame extends JFrame {
 
         jList.addListSelectionListener(e -> {
 
+//           center.add( jList.getSelectedValue(),new JTextArea());
 
-
-           center.add( jList.getSelectedValue(),new JTextArea());
-
-            System.out.println("t");
+            System.out.println(e);
         });
+
 
         sp = new JScrollPane(
                 jList,
