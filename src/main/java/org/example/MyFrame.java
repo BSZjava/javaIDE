@@ -1,11 +1,12 @@
 package org.example;
 
-import org.example.model.Settings;
-import org.example.model.settings.AppConfig;
+import org.example.model.MainController;
+import org.example.model.lang.LangList;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 
 //W górnym panelu (Taskbar) należy ułożyć 2-wa panele jeden POD drugim
@@ -18,24 +19,19 @@ import java.io.File;
 public class MyFrame extends JFrame {
 
 
-    private static AppConfig readConfig(){
-        try {
-            return AppConfig.factory("configTmp.yaml");
-        } catch (Exception ee) {
-            try {
-               return AppConfig.factory("config.yaml");
-            } catch (Exception eee) {
-                throw new RuntimeException(eee);
-            }
-        }
-    }
-    public static AppConfig config = readConfig();
+
+
+//    public static AppConfig config = readConfig();
+//
+//    public static LangController lang = readLang();
+
+
     JMenuBar menuBar;
     JMenu plik;
     JMenuItem ot,zap,settings;
     JPanel top,left;
 
-    JTabbedPane center;
+    Center center;
 
     JList<String> jList;
     DefaultListModel<String> defaultListModel;
@@ -48,8 +44,14 @@ public class MyFrame extends JFrame {
         this.setLayout(new BorderLayout());
 
         menuBar = new JMenuBar();
-        plik = new JMenu("plik");
+        plik = new JMenu();
+        MainController.langController.addObserver(
+                l->{
+                    plik.setText(l.find("File"));
+                });
+
         ot = new JMenuItem("otworz");
+
         ot.addActionListener(e -> {
 
             JFileChooser fileChooser = new JFileChooser();
@@ -65,12 +67,21 @@ public class MyFrame extends JFrame {
 
         });
         zap = new JMenuItem("zapisz");
+        zap.addActionListener(e -> {
+
+            try {
+                MainController.langController.setLangList(LangList.factory("lang/pl.yaml"));
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+
+        });
 
 
         settings = new JMenuItem("setiings");
         settings.addActionListener(e -> {
 
-         config.open();
+         MainController.configController.getAppConfig().open();
 
         });
 
@@ -108,9 +119,14 @@ public class MyFrame extends JFrame {
 
         jList.addListSelectionListener(e -> {
 
-//           center.add( jList.getSelectedValue(),new JTextArea());
+            if (e.getValueIsAdjusting()) {
+                try {
+                    center.add(jList.getSelectedValue());
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
 
-            System.out.println(e);
         });
 
 
@@ -127,7 +143,7 @@ public class MyFrame extends JFrame {
         // /left
 
 
-        center = new JTabbedPane();
+        center = new Center();
         this.add(center,BorderLayout.CENTER);
         // /center
 

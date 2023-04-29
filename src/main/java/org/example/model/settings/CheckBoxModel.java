@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.example.model.MainController;
 
 import javax.swing.*;
 @Data
@@ -17,12 +18,18 @@ public class CheckBoxModel implements ConfigItems{
 
     @Override
     public JComponent JPrint() {
-        JCheckBox jCheckBox = new JCheckBox(text);
+        JCheckBox jCheckBox = new JCheckBox();
+
+        MainController.langController.addObserver(l->{
+
+            jCheckBox.setText(l.find(text));
+
+        });
+
         jCheckBox.setSelected(selected);
         jCheckBox.addItemListener(e -> {
-
             selected = !selected;
-
+            MainController.controllerObserver.apply();
         });
         return jCheckBox;
     }

@@ -12,6 +12,9 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 @Data
 @AllArgsConstructor
@@ -28,6 +31,12 @@ public class AppConfig {
     }
     private String out;
     private ArrayList<ConfigItems> items;
+
+    public <T> Optional<T> find(Predicate<? super T> predicate, Class<T> valueType){
+
+        return items.stream().filter(e-> e.getClass()==valueType).map(e->(T)e).filter(predicate).findFirst();
+
+    }
 
     public void open(){
         JFrame fr = new JFrame("Config");

@@ -2,63 +2,49 @@
 out: "configTmp.yaml"
 items:
 - !<PanelConfig>
-  panel: "okno"
+  panel: "window"
   items:
   - !<CheckBox>
-    text: "uruchom wysrodkowane"
+    text: "run centered"
     selected: true
   - !<CheckBox>
-    text: "uruchom zmaksymalizowane"
+    text: "run maximized"
     selected: false
   - !<CheckBox>
-    text: "zapamientaj pozycje"
+    text: "remember position"
     selected: true
   - !<CheckBox>
-    text: "zapamientaj rozmiar"
+    text: "remember size"
     selected: true
 - !<PanelConfig>
   panel: "IDE"
   items:
   - !<Label>
-    text: "jezyk interfejsu"
+    text: "interface language"
   - !<ComboBox>
+    text: "interface language"
     options:
-    - "Polski"
-    - "Angielski"
-    selected: "Polski"
+    - "en"
+    - "pl"
+    selected: "en"
   - !<CheckBox>
-    text: "zapamientaj katalog przegladania"
+    text: "remember browsing directory"
     selected: false
   - !<CheckBox>
-    text: "zapamientaj otwarte pliki"
+    text: "remember open files"
     selected: true
 - !<PanelConfig>
   panel: "GUI"
   items:
   - !<CheckBox>
-    text: "ukryj menu główne"
+    text: "hide main menu"
     selected: true
   - !<CheckBox>
-    text: "odpiety pasek narzedziowy"
+    text: "detached toolbar"
     selected: false
   - !<CheckBox>
-    text: "zablokowany pasek narzedziowy"
+    text: "locked toolbar"
     selected: true
   - !<CheckBox>
-    text: "tryb ciemny"
-    selected: false
-- !<PanelConfig>
-  panel: "GUI"
-  items:
-  - !<CheckBox>
-    text: "ukryj menu główne"
-    selected: true
-  - !<CheckBox>
-    text: "odpiety pasek narzedziowy"
-    selected: false
-  - !<CheckBox>
-    text: "zablokowany pasek narzedziowy"
-    selected: true
-  - !<CheckBox>
-    text: "tryb ciemny"
+    text: "dark mode"
     selected: false
