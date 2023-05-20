@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.example.model.MainController;
+import org.example.model.lang.LangControllerSingleton;
 import org.w3c.dom.Text;
 
 import javax.swing.*;
@@ -19,7 +20,7 @@ public class LabelModel implements ConfigItems{
     @Override
     public JComponent JPrint() {
         JLabel jLabel = new JLabel();
-        MainController.langController.addObserver(l->{
+        LangControllerSingleton.getInstance().addObserver(l->{
 
             jLabel.setText(l.find(text));
 

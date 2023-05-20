@@ -27,3 +27,5 @@ list:
     value: "lock toolbar"
   - key: "dark mode"
     value: "dark mode"
+  - key: "setting"
+    value: "setting"

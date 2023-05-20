@@ -26,3 +26,5 @@ list:
     value: "zablokowany pasek narzedziowy"
   - key: "dark mode"
     value: "tryb ciemny"
+  - key: "setting"
+    value: "ustawienia"

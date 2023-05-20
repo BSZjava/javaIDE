@@ -1,7 +1,9 @@
 package org.example;
 
 import org.example.model.MainController;
+import org.example.model.lang.LangControllerSingleton;
 import org.example.model.lang.LangList;
+import org.example.model.settings.ConfigControllerSingleton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,12 +47,12 @@ public class MyFrame extends JFrame {
 
         menuBar = new JMenuBar();
         plik = new JMenu();
-        MainController.langController.addObserver(
+        LangControllerSingleton.getInstance().addObserver(
                 l->{
                     plik.setText(l.find("File"));
                 });
 
-        ot = new JMenuItem("otworz");
+        ot = new JMenuItem();
 
         ot.addActionListener(e -> {
 
@@ -66,11 +68,11 @@ public class MyFrame extends JFrame {
             }
 
         });
-        zap = new JMenuItem("zapisz");
+        zap = new JMenuItem();
         zap.addActionListener(e -> {
 
             try {
-                MainController.langController.setLangList(LangList.factory("lang/pl.yaml"));
+                LangControllerSingleton.getInstance().setLangList(LangList.factory("lang/pl.yaml"));
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -78,10 +80,15 @@ public class MyFrame extends JFrame {
         });
 
 
-        settings = new JMenuItem("setiings");
+        settings = new JMenuItem();
+        LangControllerSingleton.getInstance().addObserver(l->{
+            settings.setText(l.find("setting"));
+            zap.setText(l.find("zapisz"));
+            ot.setText(l.find("otworz"));
+        });
         settings.addActionListener(e -> {
 
-         MainController.configController.getAppConfig().open();
+         ConfigControllerSingleton.getInstance().getAppConfig().open();
 
         });
 

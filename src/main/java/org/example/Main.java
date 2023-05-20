@@ -3,6 +3,10 @@ package org.example;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.example.model.MainController;
+import org.example.model.lang.LangControllerSingleton;
+import org.example.model.settings.ComboBoxModel;
+import org.example.model.settings.ConfigControllerSingleton;
+import org.example.model.settings.PanelConfigModel;
 import org.example.model.settings.runable.RuleMessage;
 import org.example.model.settings.runable.SerializableRunnable;
 
@@ -12,23 +16,16 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        // config
+        ConfigControllerSingleton.getInstance().addObserver(a->{
+
+            String selected = a.find(e -> e.getPanel().equals("IDE"), PanelConfigModel.class).get().find(e -> e.getText().equals("interface language"), ComboBoxModel.class).get().getSelected();
+            LangControllerSingleton.getInstance().readLang(selected);
+
+        });
+
+
        new MyFrame();
-
-//        Class<?> clazz = Class.forName("org.example.Przyklad");
-//        Constructor<?> ctor = clazz.getConstructor();
-//        Object przyklad = ctor.newInstance();
-//
-//        if (przyklad instanceof Przyklad n){
-//            n.to();
-//        }
-//
-//        for (Method declaredMethod : przyklad.getClass().getDeclaredMethods()) {
-//            if (declaredMethod.getName().equals("to")){
-//                declaredMethod.setAccessible(true);
-//                declaredMethod.invoke(przyklad);
-//            }
-//        }
-
 
     }
 

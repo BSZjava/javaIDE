@@ -1,0 +1,50 @@
+---
+out: "configTmp.yaml"
+items:
+- !<PanelConfig>
+  panel: "window"
+  items:
+  - !<CheckBox>
+    text: "run centered"
+    selected: true
+  - !<CheckBox>
+    text: "run maximized"
+    selected: true
+  - !<CheckBox>
+    text: "remember position"
+    selected: true
+  - !<CheckBox>
+    text: "remember size"
+    selected: false
+- !<PanelConfig>
+  panel: "IDE"
+  items:
+  - !<Label>
+    text: "interface language"
+  - !<ComboBox>
+    text: "interface language"
+    options:
+    - "en"
+    - "pl"
+    selected: "pl"
+  - !<CheckBox>
+    text: "remember browsing directory"
+    selected: false
+  - !<CheckBox>
+    text: "remember open files"
+    selected: true
+- !<PanelConfig>
+  panel: "GUI"
+  items:
+  - !<CheckBox>
+    text: "hide main menu"
+    selected: true
+  - !<CheckBox>
+    text: "detached toolbar"
+    selected: false
+  - !<CheckBox>
+    text: "locked toolbar"
+    selected: true
+  - !<CheckBox>
+    text: "dark mode"
+    selected: false

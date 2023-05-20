@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.example.model.MainController;
+import org.example.model.lang.LangControllerSingleton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +38,7 @@ public class PanelConfigModel implements ConfigItems {
             jPanel.add(e.JPrint());
         });
 
-        MainController.langController.addObserver(l->{
+        LangControllerSingleton.getInstance().addObserver(l->{
 
             jPanel.setBorder(BorderFactory.createTitledBorder(l.find(panel)));
 

@@ -29,7 +29,8 @@ public class ComboBoxModel implements ConfigItems{
         jComboBox.addItemListener(e->{
             if (e.getStateChange() == 1){
                 selected = (String) e.getItem();
-                MainController.controllerObserver.apply();
+//                MainController.getInstance().controllerObserver.apply();
+                ConfigControllerSingleton.getInstance().runObserver();
             }
         });
 

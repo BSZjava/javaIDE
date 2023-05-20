@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.example.model.MainController;
+import org.example.model.lang.LangControllerSingleton;
 
 import javax.swing.*;
 @Data
@@ -20,7 +21,7 @@ public class CheckBoxModel implements ConfigItems{
     public JComponent JPrint() {
         JCheckBox jCheckBox = new JCheckBox();
 
-        MainController.langController.addObserver(l->{
+        LangControllerSingleton.getInstance().addObserver(l->{
 
             jCheckBox.setText(l.find(text));
 
@@ -29,7 +30,8 @@ public class CheckBoxModel implements ConfigItems{
         jCheckBox.setSelected(selected);
         jCheckBox.addItemListener(e -> {
             selected = !selected;
-            MainController.controllerObserver.apply();
+//            MainController.getInstance().controllerObserver.apply();
+            ConfigControllerSingleton.getInstance().runObserver();
         });
         return jCheckBox;
     }
