@@ -25,17 +25,12 @@ public class MainController {
     private static LangList readLang(String lang){
 
         try {
-            LangList factory = LangList.factory("lang/"+lang+".yaml");
-            return factory;
+            return LangList.factory("lang/"+lang+".yaml");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
     }
-
-
-
-
 
     public static ConfigController configController = new ConfigController(readConfig(),new ArrayList<>());
 
@@ -53,8 +48,6 @@ public class MainController {
             langController.setLangList(readLang(selected));
 
         });
-
-
 
         return true;
     };

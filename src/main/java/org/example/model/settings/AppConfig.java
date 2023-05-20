@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.example.model.settings.runable.RuleMessage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,6 +32,8 @@ public class AppConfig {
     }
     private String out;
     private ArrayList<ConfigItems> items;
+
+//    private RuleMessage massage;
 
     public <T> Optional<T> find(Predicate<? super T> predicate, Class<T> valueType){
 

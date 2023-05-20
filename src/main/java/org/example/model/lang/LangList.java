@@ -36,17 +36,4 @@ public class LangList{
         return first.get().getValue();
     }
 
-//    ListResourceBundle
-    public Object[][] getContents() {
-        Object[][] objects = new Object[list.size()][2];
-
-        for (int i = 0; i < list.size(); i++) {
-
-            LangNode langNode = list.get(i);
-            objects[i] = new Object[]{langNode.getKey(),langNode.getValue()};
-
-        }
-
-        return  objects;
-    }
 }
